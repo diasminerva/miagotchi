@@ -1,40 +1,22 @@
-# 👾 MiaGotchi — Monitor Biométrico (BPM) & Tamagotchi Físico com IA
+# MiaGotchi - Monitor Biometrico (BPM) e Tamagotchi Fisico com IA
 
-![Status](https://img.shields.io/badge/status-functional%20prototype-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.11+-blue)
-![Hardware](https://img.shields.io/badge/Hardware-ESP32--S3%20Touch%20LCD-orange)
-![Focus](https://img.shields.io/badge/Core-BPM%20Telemetry%20%26%20Reactive%20Messages-red)
+![Prototipo fisico do MiaGotchi](assets/miagotchi_hardware.jpg)
 
-![Protótipo físico do MiaGotchi](assets/miagotchi_hardware.jpg)
+Dispositivo fisico de mesa em **ESP32-S3** + **MAX30102** que mede batimentos cardiacos (BPM) em tempo real, altera expressoes faciais, envia mensagens reativas, exibe alertas de WhatsApp e conversa por voz com IA.
 
-O **MiaGotchi** é um dispositivo físico de mesa estilo Tamagotchi projetado para acompanhar sua **frequência cardíaca (BPM) em tempo real**, reagir ao seu ritmo biológico através de **expressões faciais ilustradas** e enviar **mensagens dinâmicas de feedback** diretamente na tela, além de integrar alertas de **WhatsApp** e **conversação por voz com Inteligência Artificial**.
+## Nucleo de BPM e Mensagens
 
-Construído sobre uma placa **ESP32-S3 com tela sensível ao toque, microfone e alto-falante**, o projeto conecta telemetria biométrica, arquitetura orientada a eventos em Python e interface embarcada.
+- **Calmo (< 90 BPM):** rosto tranquilo e mensagens curtas de foco (ex.: *"Mantem assim, gata."*).
+- **Animado (90 - 115 BPM):** rosto alerta com avisos leves de acompanhamento.
+- **Alto (> 115 BPM):** rosto preocupado com alerta de pausa e respiracao.
+- **Modo Hibrido:** leitura via sensor optico MAX30102 ou simulacao (`Calmo 72`, `Animado 104`, `Alto 128`).
 
----
+## Hardware
 
-## 💓 Núcleo de BPM e Mensagens Reativas
+- ESP32-S3 com tela touch, microfone e alto-falante
+- Sensor optico de pulso **MAX30102** (I2C)
+- Case compacto e alimentacao USB-C / bateria
 
-| Estado | Faixa de BPM | Expressão do Avatar | Comportamento & Mensagens Enviadas |
-| :--- | :--- | :--- | :--- |
-| **Calmo** | `< 90 BPM` | Rosto tranquilo | Envia mensagens curtas de incentivo e foco estável (ex.: *"Mantém assim, gata."*). |
-| **Animado** | `90 – 115 BPM` | Rosto alerta / atento | Detecta elevação moderada de ritmo e envia avisos leves de acompanhamento. |
-| **Alto** | `> 115 BPM` | Rosto preocupado / pico | Dispara alerta visual prioritário na tela com mensagens de pausa e respiração. |
+## Autora
 
-- **Alertas de WhatsApp:** notificações visuais discretas na tela sem interromper o fluxo de trabalho.
-- **Histórico Biométrico:** registro contínuo de horário, BPM, estado ativo e mensagens enviadas.
-- **Conversação por Voz com IA:** captura de fala pelo microfone da placa e resposta em voz alta no alto-falante integrado.
-
----
-
-## 🖥️ Hardware Utilizado
-
-- **Placa Principal:** ESP32-S3 Dual-Core 240 MHz com Display Touch LCD 2.8" (`240x320`)
-- **Áudio Bidirecional:** Microfone MEMS integrado + codec de áudio com mini alto-falante
-- **Controles:** Tela touch + botões táteis frontais em case compacto impresso em 3D
-
----
-
-## 👩‍💻 Autora
-
-Desenvolvido por **[Mia (diasminerva)](https://github.com/diasminerva)** — Desenvolvedora Fullstack.
+Desenvolvido por **[Mia (diasminerva)](https://github.com/diasminerva)**.
